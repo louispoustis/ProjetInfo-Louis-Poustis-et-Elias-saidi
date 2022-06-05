@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "pieces.h"
+#include "fonctions.h"
 
 void cpy_tab2D(int copie_tab[4][4],int tab_a_copie[4][4]){
     for (int i=0;i<4;i++){
