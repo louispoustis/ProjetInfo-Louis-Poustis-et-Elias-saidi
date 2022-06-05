@@ -1,23 +1,20 @@
 #define TAILLE 10
-int grilletetris[10][10]={{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};{' ',' ',' ',' ',' ',' ',' ',' ',' ',' '}}
 
 void affiche(grilletetris **tab)
 {
-int ligne, colonne;
+    int ligne, colonne;
     for(i=0; i<TAILLE; i++)
-{
-printf("%c ",65+i);
+    {
+        printf("%c ",65+i);
+    }
+    printf("\n");
+    for(ligne=0; ligne<TAILLE; ligne++)
+    {
+        for(colonne=0; colonne<TAILLE; colonne++)
+        {
+            printf("|%d", tab[ligne][colonne]);
+        }
+        printf("\n");
+    }
+    printf("\n");
 }
-printf("\n");
-
-for(ligne=0; ligne<TAILLE; ligne++)
-{
-for(colonne=0; colonne<TAILLE; colonne++)
-{
-printf("|%d", tab[ligne][colonne]);
-}
-printf("\n");
-}
-printf("\n");
-}
-
