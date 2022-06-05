@@ -6,6 +6,8 @@ typedef struct {
 	int forme[4][4];
 } Piece;
 
+void affiche(grilletetris **tab);
+
 void cpy_tab2D(int copie_tab[4][4],int tab_a_copie[4][4]);
 
 void creationPiece(Piece tabPiece[7]);
