@@ -16,5 +16,8 @@ int main()
      scanf("%c",&colonne);
         
  placement(grille[TAILLE][TAILLE],Piece piece_hasard,int col){        
-         return 0;
+         
+ eliminer_ligne(grille[TAILLE][TAILLE]){   
+     
+     return 0;
 }
