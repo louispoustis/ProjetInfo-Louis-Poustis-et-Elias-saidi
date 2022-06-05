@@ -1,4 +1,4 @@
-#include "grille.h"
+#include "fonctions.h"
 
 void affiche(grilletetris **tab)
 {
