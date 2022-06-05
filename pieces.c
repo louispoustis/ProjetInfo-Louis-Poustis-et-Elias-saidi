@@ -10,6 +10,21 @@ void cpy_tab2D(int copie_tab[4][4],int tab_a_copie[4][4]){
     }
 }
 
+void clear_scan(){
+	char c;
+	do{
+		c=getchar();
+	}while (c!='\n');
+}
+
+void affiche_piece(Piece piece){
+	for (int i=0;i<piece.ligne;i++){
+		for (int j=0;j<piece.colonne;j++){
+			printf("%c ",piece.forme[i][j]);
+		}printf("\n");
+	}
+}
+
 void creationPiece(Piece tabPiece[7][4]){
 	int PieceI1[4][4]={{'@','@','@','@'},{' ',' ',' ',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
 	cpy_tab2D(tabPiece[0][0].forme,PieceI1);
@@ -60,7 +75,7 @@ void creationPiece(Piece tabPiece[7][4]){
     cpy_tab2D(tabPiece[3][0].forme, PieceL1);
     tabPiece[3][0].colonne = 3;
     tabPiece[3][0].ligne = 2;
-
+    
     int PieceL2[4][4]={{'@','@',' ',' '},{' ','@',' ',' '},{' ','@',' ',' '},{' ',' ',' ',' '}};
     cpy_tab2D(tabPiece[3][1].forme, PieceL2);
     tabPiece[3][1].colonne = 2;
@@ -72,9 +87,9 @@ void creationPiece(Piece tabPiece[7][4]){
     tabPiece[3][2].ligne = 2;
 
     int PieceL4[4][4]={{'@',' ',' ',' '},{'@',' ',' ',' '},{'@','@',' ',' '},{' ',' ',' ',' '}};
-    cpy_tab2D(tabPiece[3][1].forme, PieceL4);
-    tabPiece[3][1].colonne = 2;
-    tabPiece[3][1].ligne = 3;
+    cpy_tab2D(tabPiece[3][3].forme, PieceL4);
+    tabPiece[3][3].colonne = 2;
+    tabPiece[3][3].ligne = 3;
 
     int PieceJ[4][4]={{'@','@','@',' '},{' ',' ','@',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
     cpy_tab2D(tabPiece[4][0].forme, PieceJ);
@@ -82,19 +97,19 @@ void creationPiece(Piece tabPiece[7][4]){
     tabPiece[4][0].ligne = 2;
 
     int PieceJ2[4][4]={{' ','@',' ',' '},{' ','@',' ',' '},{'@','@',' ',' '},{' ',' ',' ',' '}};
-    cpy_tab2D(tabPiece[3][1].forme, PieceJ2);
-    tabPiece[3][1].colonne = 2;
-    tabPiece[3][1].ligne = 3;
+    cpy_tab2D(tabPiece[4][1].forme, PieceJ2);
+    tabPiece[4][1].colonne = 2;
+    tabPiece[4][1].ligne = 3;
 
-    int PieceJ3[4][4]={{'@','@','@',' '},{'@',' ',' ',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
-    cpy_tab2D(tabPiece[3][2].forme, PieceJ3);
-    tabPiece[3][2].colonne = 3;
-    tabPiece[3][2].ligne = 2;
+    int PieceJ3[4][4]={{'@',' ',' ',' '},{'@','@','@',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
+    cpy_tab2D(tabPiece[4][2].forme, PieceJ3);
+    tabPiece[4][2].colonne = 3;
+    tabPiece[4][2].ligne = 2;
 
     int PieceJ4[4][4]={{'@','@',' ',' '},{'@',' ',' ',' '},{'@',' ',' ',' '},{' ',' ',' ',' '}};
-    cpy_tab2D(tabPiece[3][1].forme, PieceJ4);
-    tabPiece[3][1].colonne = 2;
-    tabPiece[3][1].ligne = 3;
+    cpy_tab2D(tabPiece[4][3].forme, PieceJ4);
+    tabPiece[4][3].colonne = 2;
+    tabPiece[4][3].ligne = 3;
 
     int PieceZ1[4][4]={{'@','@',' ',' '},{' ','@','@',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
     cpy_tab2D(tabPiece[5][0].forme, PieceZ1);
@@ -118,11 +133,19 @@ void creationPiece(Piece tabPiece[7][4]){
     cpy_tab2D(tabPiece[6][0].forme, PieceS1);
     tabPiece[6][0].colonne = 3;
     tabPiece[6][0].ligne = 2;
+    
+    cpy_tab2D(tabPiece[6][2].forme, PieceS1);
+    tabPiece[6][2].colonne = 3;
+    tabPiece[6][2].ligne = 2;
 
     int PieceS2[4][4]={{'@',' ',' ',' '},{'@','@',' ',' '},{' ','@',' ',' '},{' ',' ',' ',' '}};
     cpy_tab2D(tabPiece[6][1].forme, PieceS2);
     tabPiece[6][1].colonne = 2;
     tabPiece[6][1].ligne = 3;
+    
+    cpy_tab2D(tabPiece[6][3].forme, PieceS2);
+    tabPiece[6][3].colonne = 2;
+    tabPiece[6][3].ligne = 3;
 }
 
 int placement (int grille[TAILLE][TAILLE],Piece piece_hasard,int col){
@@ -135,7 +158,7 @@ int placement (int grille[TAILLE][TAILLE],Piece piece_hasard,int col){
 		}
 	}
 
-	int place = 0;
+	int place=0;
 	int k = 0;
 	while(place==0 && k<TAILLE-piece_hasard.ligne+1){
 		for(i=0;i< piece_hasard.ligne;i++){
@@ -144,17 +167,12 @@ int placement (int grille[TAILLE][TAILLE],Piece piece_hasard,int col){
 					place=1;
 				}
 			}
-			k+=1;
-		}
-
-	}
-	if (place==0){
-		k-=1;
+		}k+=1;
 	}
 	for(i=0;i< piece_hasard.ligne;i++){
 		for(j=0;j<piece_hasard.colonne;j++){
 			if (piece_hasard.forme[i][j]=='@'){
-				grille[i+k][j+col]='@';
+				grille[i+k-1-place][j+col]='@';
 
 			}
 		}

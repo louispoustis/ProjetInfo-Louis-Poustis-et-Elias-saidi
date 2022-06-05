@@ -6,7 +6,12 @@ typedef struct {
 	int forme[4][4];
 } Piece;
 
+
+void clear_scan();
+
 void affiche(int tab[TAILLE][TAILLE]);
+
+void affiche_piece(Piece piece);
 
 void cpy_tab2D(int copie_tab[4][4],int tab_a_copie[4][4]);
 
