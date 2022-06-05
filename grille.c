@@ -1,4 +1,4 @@
-#define TAILLE 10
+#include "grille.h"
 
 void affiche(grilletetris **tab)
 {
