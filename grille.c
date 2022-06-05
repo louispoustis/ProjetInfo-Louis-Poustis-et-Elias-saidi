@@ -1,9 +1,10 @@
+#include <stdio.h>
 #include "fonctions.h"
 
-void affiche(grilletetris **tab)
+void affiche(int tab[TAILLE][TAILLE])
 {
     int ligne, colonne;
-    for(i=0; i<TAILLE; i++)
+    for(int i=0; i<TAILLE; i++)
     {
         printf("%c ",65+i);
     }
