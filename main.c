@@ -14,5 +14,7 @@ int main()
      scanf("%d",&orient);
      printf("Entrez la colonne:/n");
      scanf("%c",&colonne);
-        return 0;
+        
+ placement(grille[TAILLE][TAILLE],Piece piece_hasard,int col){        
+         return 0;
 }
