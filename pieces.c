@@ -10,7 +10,7 @@ void cpy_tab2D(int copie_tab[4][4],int tab_a_copie[4][4]){
     }
 }
 
-void creationPiece(Piece tabPiece[7]){
+void creationPiece(Piece tabPiece[7][4]){
 	int PieceI1[4][4]={{'@','@','@','@'},{' ',' ',' ',' '},{' ',' ',' ',' '},{' ',' ',' ',' '}};
 	cpy_tab2D(tabPiece[0][0].forme,PieceI1);
     tabPiece[0][0].colonne = 4;
@@ -125,23 +125,11 @@ void creationPiece(Piece tabPiece[7]){
     tabPiece[6][1].ligne = 3;
 }
 
-int randompiece() {
-    srand(time(NULL));
-    for (int i = 0; i<Piece tabPiece[7]; i++){
-        printf("%d\n", rand() 8% );
-    }
-}
-
-Piece randompiece(Piece tabPiece[7]) {
-	return tabPiece[rand()%7];
-}
-
-int placement (int grille[TAILLE][TAILLE],Piece tabpiece[7],int col){
+int placement (int grille[TAILLE][TAILLE],Piece piece_hasard,int col){
 	int i,j;
-	Piece piece_hasard = randompiece(tabpiece);
 	for(i=0;i< piece_hasard.ligne;i++){
 		for(j=0;j<piece_hasard.colonne;j++){
-			if(grille[i][j+col]=='@' && piece.hasard[i][j]=='@'){ // la pièce depasse la grille
+			if(grille[i][j+col]=='@' && piece_hasard.forme[i][j]=='@'){ // la pièce depasse la grille
 				return 1;
 			}
 		}
@@ -152,7 +140,7 @@ int placement (int grille[TAILLE][TAILLE],Piece tabpiece[7],int col){
 	while(place==0 && k<TAILLE-piece_hasard.ligne+1){
 		for(i=0;i< piece_hasard.ligne;i++){
 			for(j=0;j<piece_hasard.colonne;j++){
-				if(grille[i+k][j+col]=='@' && piece.hasard[i][j]=='@'){
+				if(grille[i+k][j+col]=='@' && piece_hasard.forme[i][j]=='@'){
 					place=1;
 				}
 			}
@@ -165,8 +153,8 @@ int placement (int grille[TAILLE][TAILLE],Piece tabpiece[7],int col){
 	}
 	for(i=0;i< piece_hasard.ligne;i++){
 		for(j=0;j<piece_hasard.colonne;j++){
-			if (piece_hasard[i][j]=='@'){
-				grille[i+k][j+col]='@'
+			if (piece_hasard.forme[i][j]=='@'){
+				grille[i+k][j+col]='@';
 
 			}
 		}
@@ -174,9 +162,9 @@ int placement (int grille[TAILLE][TAILLE],Piece tabpiece[7],int col){
 	return 0;
 }
 
-void echange_ligne(int grille[TAILLE][TAILLE],int ligne1, int ligne 2){
+void echange_ligne(int grille[TAILLE][TAILLE],int ligne1, int ligne2){
 	int temp;
-	for (int i=0,i<TAILLE,i++){
+	for (int i=0;i<TAILLE;i++){
 		temp=grille[ligne1][i];
 		grille[ligne1][i]=grille[ligne2][i];
 		grille[ligne2][i]=temp;
@@ -184,7 +172,7 @@ void echange_ligne(int grille[TAILLE][TAILLE],int ligne1, int ligne 2){
 }
 
 void eliminer_ligne(int grille[TAILLE][TAILLE]){
-	int i,j,k=0,s;
+	int i,j,s;
 	for(i=0;i<TAILLE;i++){
 		s=0;
 		for(j=0;j<TAILLE;j++){
@@ -202,3 +190,4 @@ void eliminer_ligne(int grille[TAILLE][TAILLE]){
 		}
 	}
 }
+
