@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define TAILLE 10
-
-typedef struct {
-	int ligne;
-	int colonne;
-	int forme[4][4];
-} Piece;
+#include "pieces.h"
 
 void cpy_tab2D(int copie_tab[4][4],int tab_a_copie[4][4]){
     for (int i=0;i<4;i++){
